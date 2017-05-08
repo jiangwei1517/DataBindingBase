@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<declare-styleable name="MyTextView">-->
+        <!--<attr name="bindUri" format="string"></attr>-->
+        <!--<attr name="placeHolder" format="reference"></attr>-->
+    <!--</declare-styleable>-->
+</resources>

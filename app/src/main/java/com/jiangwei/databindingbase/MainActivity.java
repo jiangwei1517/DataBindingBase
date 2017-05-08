@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.jiangwei.databindingbase.databinding.ActivityMainBinding;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     private Person person;
     private ActivityMainBinding activityMainBinding;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         person = new Person("jiangwei", "China", "男");
         activityMainBinding.setVariable(BR.person, person);
         activityMainBinding.setVariable(BR.handler, new Handler());
+        activityMainBinding.setTime(new Date());
         activityMainBinding.viewStub.getViewStub().inflate();
     }
 

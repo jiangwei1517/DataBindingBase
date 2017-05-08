@@ -12,74 +12,104 @@
         <variable
             name="handler"
             type="com.jiangwei.databindingbase.MainActivity.Handler" />
+
+        <variable
+            name="time"
+            type="java.util.Date" />
     </data>
 
-    <LinearLayout
-        android:id="@+id/activity_main"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:context="com.jiangwei.databindingbase.MainActivity">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@{person.name}" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="@{person.nation}" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="@{person.sex}" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:onClick="@{handler::onClick}"
-            android:text="onClick" />
-
-        <EditText
+        <LinearLayout
+            android:id="@+id/activity_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:afterTextChanged="@{handler::afterTextChanged}" />
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:context="com.jiangwei.databindingbase.MainActivity">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:onClick="@{() -> handler.onClickedListener(person)}"
-            android:text="回调" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@{person}" />
 
-        <include
-            layout="@layout/include_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            bind:person="@{person}" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="@{person.nation}" />
 
-        <ViewStub
-            bind:person = "@{person}"
-            android:id="@+id/view_stub"
-            android:layout="@layout/view_stub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="@{person.sex}" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:onClick="@{handler::onClick}"
+                android:text="onClick" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:afterTextChanged="@{handler::afterTextChanged}"
+                android:hint="监听方法" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:hint="双向绑定"
+                android:text="@={person.nation}" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                bind:bindUri="@{`http://avatar.csdn.net/4/9/8/1_a10615.jpg`}"
+                bind:placeHolder="@{@drawable/ic_launcher}" />
+
+            <TextView
+                android:text="@{time}"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:onClick="@{() -> handler.onClickedListener(person)}"
+                android:text="回调" />
+
+            <include
+                layout="@layout/include_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                bind:person="@{person}" />
+
+            <ViewStub
+                android:id="@+id/view_stub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout="@layout/view_stub"
+                bind:person="@{person}" />
+        </LinearLayout>
+    </ScrollView>
 </layout>
