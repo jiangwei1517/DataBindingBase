@@ -209,6 +209,69 @@ Utils中
         });
     }
 
+## ConstraintLayout
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <layout>
+        <data>
+            <variable
+                name="person"
+                type="com.jiangwei.databindingbase.Person">
+            </variable>
+        </data>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:background="@android:color/holo_blue_light"
+            android:id="@+id/name"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{person.name}"
+            android:layout_marginLeft="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nation"
+            android:background="@android:color/holo_green_dark"
+            app:layout_constraintLeft_toRightOf="@+id/name"
+            app:layout_constraintBottom_toBottomOf="@id/name"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{person.nation}" />
+
+        <TextView
+            android:background="@android:color/holo_orange_light"
+            app:layout_constraintLeft_toRightOf="@+id/nation"
+            app:layout_constraintBaseline_toBaselineOf="@+id/nation"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@{person.sex}" />
+
+    </android.support.constraint.ConstraintLayout>
+    </layout>
+
+* A的下面在B的下面对齐 app:layout_constraintBottom_toBottomOf="parent"
+* A的上面在B的上面对齐 app:layout_constraintTop_toTopOf="parent"
+* A的左边在B的左边对齐 app:layout_constraintLeft_toLeftOf="parent"
+* A的右边在B的右边对齐 app:layout_constraintRight_toRightOf="parent"
+* 基线对齐 app:layout_constraintBaseline_toBaselineOf="@+id/nation"
+
+
+
                 
                 
                 
